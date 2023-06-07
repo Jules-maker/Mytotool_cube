@@ -11,7 +11,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('register');
+    return redirect()->route('login');
 });
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
