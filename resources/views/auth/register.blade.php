@@ -54,7 +54,7 @@
 
     <div class="w-full md:w-1/2 flex flex-col">
         <div class="flex justify-center pt-12 md:pl-12 md:-mb-12">
-            <a href="#" class=" text-white font-bold text-xl p-4 " alt="Logo"><img src="{{ asset('images/logo-cropped.png') }}" alt="logo mytotool" width="500"/></a>
+            <a href="#" class=" text-white font-bold text-xl p-4 " alt="Logo"><img src="{{ asset('images/mytotool-logo.png') }}" alt="logo mytotool" width="500"/></a>
         </div>
 
         <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
@@ -64,26 +64,26 @@
         	<form method="POST" action="{{ route('register') }}" class="flex flex-col pt-3 md:pt-8">
         		@csrf
         		<div class="flex flex-col pt-4">
-    			<x-input-label for="name" :value="__('Name')" />
+    			<x-input-label for="name" :value="__('Nom complet')" />
     			<x-text-input id="name" placeholder="John Smith" class="bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
     			type="text" name="name" :value="old('name')" required autofocus autocomplete="name"/>
     			<x-input-error :messages="$errors->get('name')" class="mt-1 text-red-500 text-sm"/>
         		</div>
         		<div class="flex flex-col pt-4">
     			<x-input-label for="email" :value="__('Email')" />
-    			<x-text-input id="email" placeholder="your@email.com" class="bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+    			<x-text-input id="email" placeholder="votre@email.com" class="bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
     			type="email" name="email" :value="old('email')" required autocomplete="username"/>
     			<x-input-error :messages="$errors->get('email')" class="mt-1 text-red-500 text-sm"/>
         		</div>
         		<div class="flex flex-col pt-4">
-    			<x-input-label for="password" :value="__('Password')" />
-    			<x-text-input id="password" placeholder="Password" class="bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+    			<x-input-label for="password" :value="__('Mot de passe')" />
+    			<x-text-input id="password" placeholder="Mot de passe" class="bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
     			type="password" name="password" required autocomplete="new-password" />
     			<x-input-error :messages="$errors->get('password')" class="mt-1 text-red-500 text-sm"/>
         		</div>
         		<div class="flex flex-col pt-4">
-    			<x-input-label for="password_confirmation" :value="__('Confirm Password')"/>
-    			<x-text-input id="password_confirmation" placeholder="Password" class="bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+    			<x-input-label for="password_confirmation" :value="__('Confirmer le mot de passe')"/>
+    			<x-text-input id="password_confirmation" placeholder="Mot de passe" class="bg-white shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
     			type="password" name="password_confirmation" required autocomplete="new-password"/>
     			<x-input-error :messages="$errors->get('password_confirmation')" class="mt-1 text-red-500 text-sm"/>
         		</div>
@@ -103,6 +103,6 @@
 
     <!-- Image Section ok -->
     <div class="w-1/2 shadow-2xl">
-    <img class="object-cover w-full h-screen hidden md:block" src="https://source.unsplash.com/IXUM4cJynP0" alt="Background" />
+    <img class="object-cover w-full h-screen hidden md:block" src="{{asset('images/icon-business-target-project-tasks-list-time.jpg')}}" alt="Background, Image by upklyak on freepik" />
 
 </x-guest-layout>

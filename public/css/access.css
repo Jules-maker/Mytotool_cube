@@ -1,8 +1,0 @@
-h1.test {
-    color: blue  !important;
-}
-
-input:not([type="submit"]) {
-    background-color: #ffff;
-    color: #000000;
-}

@@ -3,11 +3,11 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="w-full md:w-1/2 flex flex-col">
     <div class="flex justify-center pt-12 md:pl-12 md:-mb-12">
-        <a href="#" class=" text-white font-bold text-xl p-4 " alt="Logo"><img src="{{ asset('images/logo-cropped.png') }}" alt="logo mytotool" width="500"/></a>
+        <a href="#" class=" text-white font-bold text-xl p-4 " alt="Logo"><img src="{{ asset('images/mytotool-logo.png') }}" alt="logo mytotool" width="500"/></a>
     </div>
     <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-    	<h1 class="text-center text-3xl dark:">
-    		Heureux de vous revoir 🙋‍♂️
+    	<h1 class="text-center text-3xl mb-5">
+    		Ravi de vous revoir 🙋‍♂️
     	</h1>
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -63,5 +63,5 @@
 </div>
     <!-- Image Section ok -->
     <div class="w-1/2 shadow-2xl">
-    <img class="object-cover w-full h-screen hidden md:block" src="https://source.unsplash.com/IXUM4cJynP0" alt="Background" />
+    <img class="object-cover w-full h-screen hidden md:block" src="{{asset('images/icon-business-target-project-tasks-list-time.jpg')}}" alt="Background, Image by upklyak on freepik" />
 </x-guest-layout>
