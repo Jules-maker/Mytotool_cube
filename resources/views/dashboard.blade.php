@@ -27,9 +27,9 @@
         			<tr class="bg-slate-200 dark:bg-gray-800 text-lg rounded-lg">
             			<td colspan="5" class="p-3 fix-border">
 							<!-- TODO: add route and controller to use  route('tasks.store')   -->
-                			<form method="POST" action="{{ ('tasks.store') }}" class="rounded-lg flex ">
+                			<form method="POST" action="{{ route('tasks.store') }}" class="rounded-lg flex ">
                 				@csrf
-                				<input type="text" name="task_name" placeholder="Nom de la tâche" class="p-3   px-2 py-1 rounded-lg focus:outline-none focus:ring-2  focus:border-transparent mr-4">
+                				<input type="text" name="name" placeholder="Nom de la tâche" class="p-3   px-2 py-1 rounded-lg focus:outline-none focus:ring-2  focus:border-transparent mr-4">
 								<textarea rows="1" name="description" placeholder="Description" class="border-2 py-1 rounded-lg focus:outline-none focus:ring-2  focus:border-transparent mr-4" class="p-3"></textarea>
 								<input type="text" name="category" placeholder="Catégorie" class="border-2  px-2 py-1 rounded-lg focus:outline-none focus:ring-2  focus:border-transparent mr-4" class="p-3">
 								<select name="status" class="border-2  px-8 py-1 mr-6 rounded-md focus:outline-none focus:ring-2  focus:border-transparent" class="p-3">
@@ -55,33 +55,46 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="bg-slate-200 dark:bg-gray-800 text-lg">
-						<td class="p-3">
-							<div class="flex align-items-center">
-								<div class="ml-3">
-									<div class="">Faire sa déclaration</div>
+					@foreach($tasks as $task)
+						@if($task->user_id == auth()->user()->id)
+						<tr class="bg-slate-200 dark:bg-gray-800 text-lg">
+							<td class="p-3">
+								<div class="flex align-items-center">
+									<div class="ml-3">
+										<div class="">{{$task->name}}</div>
+									</div>
 								</div>
-							</div>
-						</td>
-						<td class="p-3 max-w-xs break-words">
-							<p>ne pas oublier les fiches de paie</p>
-							  
-						</td>
-						<td class="p-3 font-bold">
-							impôts
-						</td>
-						<td class="p-3">
-							<span class="bg-green-400 text-gray-50 rounded-md px-2">fait ✨</span>
-						</td>
-						<td class="p-3 ">
-							<a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
-								<i class="material-icons-outlined text-base">modifier</i>
-							</a>
-							<a href="#" class="text-gray-400 hover:text-gray-100  ml-2">
-								<i class="material-icons-round text-base">supprimer</i>
-							</a>
-						</td>
-					</tr>
+							</td>
+							<td class="p-3 max-w-xs break-words">
+								<p>{{$task->description}}</p>
+							</td>
+							<td class="p-3 font-bold">
+								{{$task->category}}
+							</td>
+							<td class="p-3">
+							@if($task->status === 'A faire')
+							<span class="bg-red-400 text-gray-50 rounded-md px-2">{{$task->status}}</span>
+							@elseif($task->status === 'En cours')
+								<span class="bg-blue-400 text-gray-50 rounded-md px-2">{{$task->status}}</span>
+							@elseif($task->status === 'Terminé')
+								<span class="bg-green-400 text-gray-50 rounded-md px-2">{{$task->status}} ✨</span>
+							@endif
+							</td>
+							<td class="p-3 ">
+								<a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
+									<i class="material-icons-outlined text-base">modifier</i>
+								</a>
+								<a href="#" class="text-gray-400 hover:text-gray-100  ml-2">
+									<i class="material-icons-round text-base">supprimer</i>
+								</a>
+							</td>
+						</tr>
+						@endif
+					@endforeach
+
+
+
+
 					<tr class="bg-slate-200 dark:bg-gray-800">
 						<td class="p-3">
 							<div class="flex align-items-center">

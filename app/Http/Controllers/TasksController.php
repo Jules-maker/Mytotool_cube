@@ -13,10 +13,14 @@ class TasksController extends Controller
     public function index()
     {
         
-        return view('tasks.index', [
+        // return view('tasks.index', [
+        //     'tasks' => Task::all()
+        // ]);
+        //return view dashboard with tasks
+        return view('dashboard', [
             'tasks' => Task::all()
         ]);
-        
+
     }
 
     /**
@@ -32,7 +36,17 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = auth()->user();
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+            'status' => 'required|max:255',
+            'category' => 'required|max:255',
+        ]);
+        $validated['user_id'] = $user->id;
+        Task::create($validated);
+
+        return redirect()->route('dashboard')->with('success', 'Et une de plus à la liste !');
     }
 
     /**

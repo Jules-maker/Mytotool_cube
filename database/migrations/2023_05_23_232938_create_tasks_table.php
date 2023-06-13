@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->enum('status', ['A faire', 'En cours', 'Terminé'])->default('A faire');
+            $table->enum('category', ['Personnel', 'Travail', 'Urgent', 'Important', 'Loisir'])->default('Personnel');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');            
             $table->timestamps();
