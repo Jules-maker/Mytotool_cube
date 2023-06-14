@@ -35,6 +35,16 @@ Route::get('/dashboard', [TasksController::class, 'index'])
 Route::post('/dashboard', [TasksController::class, 'store'])
     ->middleware(['auth', 'verified'])
     ->name('tasks.store');
+Route::delete('/dashboard/{task}', [TasksController::class, 'destroy'])
+    ->middleware(['auth', 'verified'])
+    ->name('tasks.destroy');
+Route::get('/dashboard/{task}/edit', [TasksController::class, 'edit'])
+    ->middleware(['auth', 'verified'])
+    ->name('tasks.edit');
+Route::put('/dashboard/{task}', [TasksController::class, 'update'])
+    ->middleware(['auth', 'verified'])
+    ->name('tasks.update');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

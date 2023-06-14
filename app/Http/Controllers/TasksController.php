@@ -62,7 +62,9 @@ class TasksController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        // dd($task);
+        return view('taskEdit', ['task' => $task]);
+        
     }
 
     /**
@@ -70,7 +72,18 @@ class TasksController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $user = auth()->user();
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+            'status' => 'required|max:255',
+            'category' => 'required|max:255',
+        ]);
+        $validated['user_id'] = $user->id;
+        $task->update($validated);
+
+        return redirect()->route('dashboard')->with('success', 'La tâche a été modifiée avec succès.');
+
     }
 
     /**
@@ -78,6 +91,7 @@ class TasksController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return redirect()->route('dashboard')->with('success', 'La tâche a été supprimée avec succès.');
     }
 }
